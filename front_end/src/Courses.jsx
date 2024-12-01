@@ -41,7 +41,7 @@ function Courses({ selectedCategory }) {
 
   return (
     <div
-      className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 min-w-fit">
+      className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
       {courses?.length === 0 && <p className="text-center text-lg font-normal">There are no courses found</p>}
       {courses?.map((item) => (
 
