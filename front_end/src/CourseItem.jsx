@@ -3,7 +3,7 @@ import React from 'react'
 function CourseItem({ item }) {
   return (
     <div
-      className="w-full min-h-60 pb-2 flex flex-col rounded-md bg-white shadow hover:bg-gray-100 cursor-pointer">
+      className="w-full min-w-fit min-h-60 pb-2 flex flex-col rounded-md bg-white shadow hover:bg-gray-100 cursor-pointer">
       <div className="mb-5 md:w-full">
         <img src={item?.image_preview} className="object-cover rounded-md  h-full w-full" alt={item.title}/>
       </div>
