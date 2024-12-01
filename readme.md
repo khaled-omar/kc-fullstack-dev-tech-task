@@ -27,7 +27,9 @@
 ## How to run project:
 
 ```
-docker-compose up --build
+1. docker-compose up --build
+2. cd api && php migrate_script.php
+3. cd front_end && npm run build
 ```
 
 ## Hosts:
