@@ -36,8 +36,8 @@ function Categories({ onSelectCategory }) {
         {categoryList.map((item) => (
           <li key={item.id}>
             <span
-              className={`block text-sm text-nowrap text-gray-700 cursor-pointer py-0.5 hover:text-blue-300 ${
-                selectedCategory === item.id ? 'text-blue-300' : ''
+              className={`block text-sm text-nowrap  cursor-pointer py-0.5 hover:text-blue-300 ${
+                selectedCategory === item?.id ? 'text-blue-300' : 'text-gray-700'
               }`}
               onClick={(e) => handleCategoryClick(e, item)}
             >
@@ -54,7 +54,7 @@ function Categories({ onSelectCategory }) {
   };
 
   return (
-    <div className="w-full xs:w-1/2 md:1/3">
+    <div className="xs:w-1/2 md:1/3">
       {renderCategories(categories)}
     </div>
   );
