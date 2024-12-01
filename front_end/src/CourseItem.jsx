@@ -8,9 +8,9 @@ function CourseItem({ item }) {
         <img src={item?.image_preview} className="object-cover rounded-md  h-full w-full" alt={item.title}/>
       </div>
       <div className="px-5">
-        <h2 className="text-sm font-black">{item.title.substring(0, 20) }</h2>
+        <h2 className="text-sm font-black ">{item.title.substring(0, 20) }</h2>
         <p
-          className="text-sm text-gray-700 my-2">{item.description.substring(0, 50) + '...'}</p>
+          className="text-sm text-gray-700 my-2">{item.description.substring(0, 40) + '...'}</p>
       </div>
     </div>
   )

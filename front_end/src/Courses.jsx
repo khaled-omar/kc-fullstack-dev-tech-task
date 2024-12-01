@@ -4,6 +4,7 @@ import CourseItem from './CourseItem.jsx'
 function Courses({ selectedCategory }) {
   const [courses, setCourses] = useState([])
   const [selectedCourse, setSelectedCourse] = useState(null)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchCourses()
@@ -26,11 +27,14 @@ function Courses({ selectedCategory }) {
       })
       .then((data) => {
         setCourses(data)
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching categories:', error)
+        setLoading(false);
       })
   }
+
   const handleCourseClick = (course) => {
     setSelectedCourse(course);
   };
@@ -41,9 +45,10 @@ function Courses({ selectedCategory }) {
 
   return (
     <div
+
       className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-      {courses?.length === 0 && <p className="text-center text-lg font-normal">There are no courses found</p>}
-      {courses?.map((item) => (
+      {!loading && courses.length === 0 && <p className="text-center text-lg font-normal">There are no courses found</p>}
+      {!loading &&  courses?.map((item) => (
 
         <div key={item.id} onClick={() => handleCourseClick(item)}>
           <CourseItem item={item}/>
