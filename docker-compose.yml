@@ -23,7 +23,8 @@ services:
       MYSQL_USER: test_user
       MYSQL_PASSWORD: test_password
     volumes:
-        - ./database/volume:/var/lib/mysql
+        - mysql_data:/var/lib/mysql
+        - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
     hostname: database.cc.localhost
     labels:
       - traefik.tcp.routers.mysql.entrypoints=mysql
@@ -39,20 +40,26 @@ services:
       - db
     volumes:
       - ./api/:/var/www/html/
-    stdin_open: true
-    tty: true
     hostname: api.cc.localhost
     labels:
       - traefik.http.routers.api.rule=Host(`api.cc.localhost`)
+    command: >
+      bash -c "a2enmod rewrite && docker-php-ext-install pdo_mysql &&
+               sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf && 
+               apache2-foreground"
+    ports:
+      - "8081:80"   # Adjust the port as needed
   front:
     image: php:8.3-apache
     container_name: front
     depends_on:
       - api
     volumes:
-      - ./front_end/:/var/www/html/
+      - ./front_end/dist:/var/www/html/
     stdin_open: true
     tty: true
     hostname: api.cc.localhost
     labels:
       - traefik.http.routers.front.rule=Host(`cc.localhost`)
+volumes:
+  mysql_data:

@@ -1,3 +1,4 @@
 <?php
 
-echo "API coming soon";
+require_once 'bootstrap.php';
+require_once 'routes.php';

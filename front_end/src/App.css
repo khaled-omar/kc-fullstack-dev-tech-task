@@ -1,0 +1,12 @@
+body{
+  background-color: #e5e7eb;
+  /*min-width: 768px;*/
+}
+
+.container{
+  /*background-color: aquamarine;*/
+}
+
+.container div > div {
+  /*background-color: #9ca3af;*/
+}
