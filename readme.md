@@ -1,4 +1,4 @@
-# Test task - Course catalog
+# Course catalog
 ## To do:
 
 1. Create a Restful API according to the specification in the swagger.yaml;
